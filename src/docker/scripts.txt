@@ -1,0 +1,19 @@
+
+# Create network, then create adatabas db, run 
+docker network create adabas_natural
+
+docker run -d -e ACCEPT_EULA=Y -e ADADBID=12 -e "ADA_DB_CREATION=demodb" --network adabas_natural --name ADABAS-DB store/softwareag/adabas-ce:7.0.0
+
+docker exec -it ADABAS-DB adainfo.sh
+
+docker run -d -p 2700:2700 --network adabas_natural -e ACCEPT_EULA=Y store/softwareag/natural-ce:9.1.3
+
+
+
+#
+also the image for docker adabas manager
+
+
+Linux commands
+:w !sudo tee %
+https://superuser.com/questions/694450/using-vim-to-force-edit-a-file-when-you-opened-without-permissions
